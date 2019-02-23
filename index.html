@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Puzzle</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            flex-direction: column;
+        }
+        #puzzle {
+            width: 50%;
+            height: 50%;
+            padding: 8px;
+            background-size: contain;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+        .frame {
+            background-color: #fff;
+        }
+        .piece {
+            position: absolute;
+        }
+        .dropped {
+            transition: all 0.3s;
+        }
+        .hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="puzzle"></div>
+</div>
+
+<script src="./main.js"></script>
+</body>
+</html>
