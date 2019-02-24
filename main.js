@@ -90,8 +90,14 @@ function dragStart(e) {
 }
 
 function dragMove(e) {
-  addHover(e.clientY, e.clientX);
   if (!currentPiece) return;
+
+  if (e instanceof TouchEvent) {
+    e.preventDefault();
+    e.clientX = e.touches[0].clientX;
+    e.clientY = e.touches[0].clientY;
+  }
+  addHover(e.clientY, e.clientX);
 
   currentPiece.style.top = `${e.clientY - pieceH / 2}px`;
   currentPiece.style.left = `${e.clientX - pieceW / 2}px`;
