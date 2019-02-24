@@ -14,7 +14,13 @@ let currentFrame = null;
 let currentPiece = null;
 let currentIndex = 0;
 
-document.addEventListener('mousemove', dragMove);
+const isTouchDevice = 'ontouchstart' in window;
+
+const mouseDownEvent = isTouchDevice ? 'touchstart' : 'mousedown';
+const mouseMoveEvent = isTouchDevice ? 'touchmove' : 'mousemove';
+const mouseUpEvent = isTouchDevice ? 'touchend' : 'mouseup';
+
+document.addEventListener(mouseMoveEvent, dragMove);
 
 function setImage() {
   const style = document.createElement('style');
@@ -52,8 +58,8 @@ function makeGrid() {
     frames.push(frame);
     pieces.push(piece);
 
-    piece.addEventListener('mousedown', dragStart);
-    piece.addEventListener('mouseup', dragEnd);
+    piece.addEventListener(mouseDownEvent, dragStart);
+    piece.addEventListener(mouseUpEvent, dragEnd);
 
     piece.style.backgroundPosition = `
       ${(-(i % COLS) * pieceW - padding)}px
